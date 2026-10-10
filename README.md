@@ -31,3 +31,7 @@ PORT=4567 ./scripts/run.sh
 - `GET /` returns service information
 - `GET /healthz` returns `200` and `ok`
 - `GET /notes` returns the number of notes
+
+## What it does
+
+Java Notes API is a small HTTP service. `GET /` returns service information, `GET /healthz` returns `200` and `ok`, and `GET /notes` returns the number of notes.
