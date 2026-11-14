@@ -11,6 +11,7 @@ public class Server {
     static final List<String> NOTES = List.of("alpha", "beta", "gamma");
 
     public static HttpServer makeServer(int port) throws IOException {
+        String greeting = System.getenv().getOrDefault("GREETING", "hello");
         HttpServer server = HttpServer.create(
                 new InetSocketAddress("0.0.0.0", port), 0
         );
@@ -23,7 +24,7 @@ public class Server {
 
         server.createContext("/", exchange -> {
             if (exchange.getRequestURI().getPath().equals("/")) {
-                send(exchange, 200, "notes service");
+                send(exchange, 200, greeting + " from notes service");
             } else {
                 send(exchange, 404, "not found");
             }
@@ -51,9 +52,11 @@ public class Server {
 
     public static void main(String[] args) throws Exception {
         String portValue = System.getenv().getOrDefault("PORT", "8080");
+        String apiKey = System.getenv("API_KEY");
         int port = Integer.parseInt(portValue);
 
         makeServer(port).start();
         System.out.println("Server started on port " + port);
+        System.out.println("API key configured: " + (apiKey != null && !apiKey.isBlank()));
     }
 }
