@@ -35,3 +35,9 @@ PORT=4567 ./scripts/run.sh
 ## What it does
 
 Java Notes API is a small HTTP service. `GET /` returns service information, `GET /healthz` returns `200` and `ok`, and `GET /notes` returns the number of notes.
+
+## Rollback
+
+To roll back a deployment, run `git revert <commit>` for the commit that changed the
+deployed image, then push the revert commit to `main`. Argo CD automatically syncs the
+repository and restores the previous pinned image version.
