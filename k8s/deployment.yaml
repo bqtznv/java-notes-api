@@ -18,7 +18,7 @@ spec:
           type: RuntimeDefault
       containers:
         - name: app
-          image: ghcr.io/bqtznv/java-notes-api:c0cdf712f2c3a220ed8f9c397719db0e3b59652e
+          image: ghcr.io/bqtznv/java-notes-api:f3183062a2206daf4091c15dc971710442505e37
           ports:
             - name: http
               containerPort: 8080
